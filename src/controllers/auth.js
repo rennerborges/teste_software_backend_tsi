@@ -16,7 +16,7 @@ export const login = (req, res) => {
     return res.status(200).json({ auth: true, token: token });
   }
 
-  res.status(403).json({ auth: false, message: 'Credenciais inválidas' });
+  res.status(401).json({ auth: false, message: 'Credenciais inválidas' });
 };
 
 export default {
