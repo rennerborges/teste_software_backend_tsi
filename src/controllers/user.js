@@ -1,9 +1,9 @@
 export const getUser = (req, res) => {
-  res.json({ status: 'ok' });
+  res.json({ status: 'Busca de Usuario Ok' });
 };
 
 export const getUsers = (req, res) => {
-  res.json({ status: 'ok' });
+  res.json({ status: 'Busca de Usuarios Ok' });
 };
 
 export const createUser = (req, res) => {
