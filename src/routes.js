@@ -1,11 +1,13 @@
 import express from 'express';
-import productController from './controller/productController';
-import userController from './controller/userController';
+
+import environmentController from './controllers/environment';
 
 const router = express.Router();
 
-router.get('/states', userController.getStates);
-router.get('/users', userController.getUsers);
-router.get('/products', productController.getProduct);
+router.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+router.get('/environments', environmentController.getEnvironment);
 
 export default router;

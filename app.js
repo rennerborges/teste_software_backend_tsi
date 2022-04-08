@@ -1,12 +1,9 @@
 import express from 'express';
-
-const router = express.Router();
-
-router.get('/', (req, res) => {
-  res.send('Hello World');
-});
+import bodyParser from 'body-parser';
+import router from './src/routes';
 
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(router);
 
 export default app;
