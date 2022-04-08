@@ -7,7 +7,7 @@ export const getUsers = (req, res) => {
 };
 
 export const createUser = (req, res) => {
-  res.json({ status: 'ok' });
+  res.json({ user: req.body });
 };
 
 export const updateUser = (req, res) => {
