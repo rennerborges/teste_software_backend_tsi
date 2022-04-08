@@ -13,10 +13,10 @@ export const login = (req, res) => {
     var token = jwt.sign({ id, user, password }, process.env.SECRET, {
       expiresIn: 300, // expires in 5min
     });
-    res.status(200).json({ auth: true, token: token });
+    return res.status(200).json({ auth: true, token: token });
   }
 
-  res.status(500).json({ auth: false, message: 'Login invalid' });
+  res.status(403).json({ auth: false, message: 'Credenciais inválidas' });
 };
 
 export default {
