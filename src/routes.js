@@ -5,6 +5,7 @@ import userController from './controllers/user';
 import authController from './controllers/auth';
 
 import { Auth } from './middleware/auth';
+import ValidationUserPost from './validation/user-post';
 
 const router = express.Router();
 
@@ -21,7 +22,7 @@ router.patch('/environment', Auth, environmentController.updateEnvironment);
 
 router.get('/users', Auth, userController.getUser);
 router.get('/user/:id', Auth, userController.getUser);
-router.post('/user', Auth, userController.createUser);
+router.post('/user', Auth, ValidationUserPost, userController.createUser);
 router.patch('/user', Auth, userController.updateUser);
 
 export default router;

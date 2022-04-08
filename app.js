@@ -7,4 +7,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(router);
 
+app.use(function onError(err, req, res, next) {
+  res.status(400).json({ error: err.message });
+});
 export default app;
