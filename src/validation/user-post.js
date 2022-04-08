@@ -1,10 +1,16 @@
 import * as yup from 'yup';
 import { isValidCpf } from '../util/cpf';
+import { isValidTel } from '../util/tel';
 
 const ValidationUserPost = (req, res, next) => {
-  let schema = yup.object().shape({
+  const schema = yup.object().shape({
     name: yup.string().required('O nome é necessário'),
-    tel: yup.string().required('O telefone é necessário'),
+    tel: yup
+      .string()
+      .required('O telefone é necessário')
+      .test('is-tel', 'É necessário informar um telefone válido', (value) =>
+        isValidTel(value)
+      ),
     cpf: yup
       .string()
       .required('O CPF é necessário')
@@ -13,11 +19,9 @@ const ValidationUserPost = (req, res, next) => {
     dateOfBirth: yup.date().required('A data de nascimento é necessária'),
   });
 
-  schema
+  return schema
     .validate(req.body)
-    .then(function (valid) {
-      next();
-    })
+    .then(() => next())
     .catch((error) => next(error));
 };
 
