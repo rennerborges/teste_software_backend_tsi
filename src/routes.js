@@ -4,8 +4,8 @@ import environmentController from './controllers/environment-controller';
 import userController from './controllers/user-controller';
 import authController from './controllers/auth-controller';
 
-import { Auth } from './middleware/auth';
-import ValidationUserPost from './validation/user-post';
+import { Auth } from './middleware/auth-middleware';
+import ValidationUserPost from './validation/user-post-validation';
 
 const router = express.Router();
 
