@@ -10,10 +10,17 @@ export const login = (req, res) => {
 
   if ((user === 'rafael' || user === 'renner') && password === '123') {
     const id = 1;
-    var token = jwt.sign({ id, user, password }, process.env.SECRET, {
-      expiresIn: 300, // expires in 5min
+    var token = jwt.sign(
+      { id, user, password, permision: user === 'rafael' ? 'c' : 'g' },
+      process.env.SECRET,
+      {
+        expiresIn: 300, // expires in 5min
+      }
+    );
+    return res.status(200).json({
+      auth: true,
+      token: token,
     });
-    return res.status(200).json({ auth: true, token: token });
   }
 
   res.status(401).json({ auth: false, message: 'Credenciais inválidas' });

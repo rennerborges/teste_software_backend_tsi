@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import router from './src/routes';
-import errorController from './src/controllers/error';
+import errorController from './src/controllers/error-controller';
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
