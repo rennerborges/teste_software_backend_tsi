@@ -5,7 +5,7 @@ export const errorSend = (err, req, res, next) => {
     response.path = err.path;
   }
 
-  res.status(err.code || 400).json(response);
+  res.status(err.code || 400).json({ response });
 };
 
 export const setError404 = (req, res, next) => {

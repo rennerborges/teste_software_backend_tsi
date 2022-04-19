@@ -6,6 +6,7 @@ import authController from './controllers/auth-controller';
 
 import { Auth } from './middleware/auth-middleware';
 import ValidationUserPost from './validation/user-post-validation';
+import ValidationEnvironmentPost from './validation/environment-post-validation';
 
 const router = express.Router();
 
@@ -17,7 +18,12 @@ router.post('/login', authController.login);
 
 router.get('/environments', Auth('g'), environmentController.getEnvironments);
 router.get('/environment/:id', Auth('g'), environmentController.getEnvironment);
-router.post('/environment', Auth('g'), environmentController.createEnvironment);
+router.post(
+  '/environment',
+  Auth('g'),
+  ValidationEnvironmentPost,
+  environmentController.createEnvironment
+);
 router.patch(
   '/environment',
   Auth('g'),
