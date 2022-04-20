@@ -11,7 +11,7 @@ import ValidationEnvironmentPost from './validation/environment-post-validation'
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.send('Hello World');
+  res.json({ message: 'Hello World' });
 });
 
 router.post('/login', authController.login);
