@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import { isValidCnpj } from '../util/cnpj';
 
-const ValidationEnvironmentPost = (req, res, next) => {
+const ValidationCompanyPost = (req, res, next) => {
   const schema = yup.object().shape({
     fantasyName: yup.string().required('O nome fantasia é necessário'),
     corporateName: yup.string().required('A razão social é necessária'),
@@ -18,4 +18,4 @@ const ValidationEnvironmentPost = (req, res, next) => {
     .catch((error) => next(error));
 };
 
-export default ValidationEnvironmentPost;
+export default ValidationCompanyPost;
