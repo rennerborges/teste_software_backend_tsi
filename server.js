@@ -1,13 +1,25 @@
+const moongose = require('mongoose');
+const express = require('express');
+
+import cors from 'cors';
 import dotenv from 'dotenv';
 
 import app from './app';
 
 dotenv.config({ path: './variables.env' });
 
-app.set('port', process.env.PORT || 7778);
+moongose.connect( process.env.DATABASE, { useNewUrlParser: true, useUnifiedTopology:true})
+moongose.Promise = global.Promise;
+moongose.connection.on('error',(error)=>{
+    console.error("ERRO: "+error.message); 
+});
 
-const server = app.listen(app.get('port'), () =>
-  console.log(
-    `\x1b[34mServidor rodando na porta: \x1b[0m${server.address().port}`
-  )
-);
+const server = express();
+server.use(cors());
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+server.use('/',app);
+
+server.listen(process.env.PORT, ()=>{
+    console.log(`Servidor rodando na porta: ${process.env.PORT}`);
+})
