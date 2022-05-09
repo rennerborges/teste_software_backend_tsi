@@ -61,9 +61,14 @@ export const updateUser = (req, res) => {
   res.json({ status: 'ok' });
 };
 
+export const deleteUser = (req, res) => {
+  res.json({ status: 'ok' });
+};
+
 export default {
   getUser,
   getUsers,
   createUser,
   updateUser,
+  deleteUser,
 };
