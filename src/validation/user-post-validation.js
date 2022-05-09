@@ -18,6 +18,8 @@ const ValidationUserPost = (req, res, next) => {
     email: yup.string().email().required('O e-mail é necessário'),
     dateOfBirth: yup.date().required('A data de nascimento é necessária'),
     companyId: yup.string().required('O id da empresa é necessário'),
+    role: yup.string().required('Uma permissão é necessária'),
+    schedules: yup.string().required('O id dos horários é obrigatório'),
   });
 
   return schema

@@ -5,6 +5,8 @@ export const getUser = (req, res) => {
     cpf: '04447289105',
     tel: '6499295-4946',
     dateOfBirth: new Date(),
+    company: 1,
+    role: 'g',
   });
 };
 
@@ -17,6 +19,8 @@ export const getUsers = (req, res) => {
         cpf: '04447289105',
         tel: '6499295-4946',
         dateOfBirth: new Date(),
+        company: 1,
+        role: 'c',
       },
       {
         name: 'rafael',
@@ -24,6 +28,8 @@ export const getUsers = (req, res) => {
         cpf: '487966215484',
         tel: '6499514-4946',
         dateOfBirth: new Date(),
+        company: 1,
+        role: 'c',
       },
       {
         name: 'renner',
@@ -31,6 +37,8 @@ export const getUsers = (req, res) => {
         cpf: '04447289105',
         tel: '6499295-4946',
         dateOfBirth: new Date(),
+        company: 1,
+        role: 'c',
       },
       {
         name: 'daniel',
@@ -38,6 +46,8 @@ export const getUsers = (req, res) => {
         cpf: '54654665498',
         tel: '6499514-5878',
         dateOfBirth: new Date(),
+        company: 1,
+        role: 'c',
       },
     ],
   });
