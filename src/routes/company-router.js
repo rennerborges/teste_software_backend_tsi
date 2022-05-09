@@ -10,22 +10,18 @@ const router = express.Router();
 
 router.post('/login', authController.login);
 
-router.get('/environments', Auth('g'), companyController.getEnvironments);
+router.get('/company', Auth('g'), companyController.getEnvironments);
 
-router.get('/environment/:id', Auth('g'), companyController.getEnvironment);
+router.get('/company/:id', Auth('g'), companyController.getEnvironment);
 
 router.post(
-  '/environment',
+  '/company',
   Auth('g'),
   ValidationEnvironmentPost,
   companyController.createEnvironment
 );
 
-router.patch('/environment', Auth('g'), companyController.updateEnvironment);
-router.delete(
-  '/environment/:id',
-  Auth('g'),
-  companyController.deleteEnvironment
-);
+router.patch('/company', Auth('g'), companyController.updateEnvironment);
+router.delete('/company/:id', Auth('g'), companyController.deleteEnvironment);
 
 export default router;
