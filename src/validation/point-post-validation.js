@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 
-const ValidationUserPost = (req, res, next) => {
+const ValidationPointPost = (req, res, next) => {
   const schema = yup.object().shape({
-    date: yup.Date().required('A data do ponto é necessária'),
+    date: yup.date().required('A data do ponto é necessária'),
     companyId: yup.string().required('O id da empresa é necessário'),
     userId: yup.string().required('O id do usuário é necessário'),
   });
@@ -13,4 +13,4 @@ const ValidationUserPost = (req, res, next) => {
     .catch((error) => next(error));
 };
 
-export default ValidationUserPost;
+export default ValidationPointPost;

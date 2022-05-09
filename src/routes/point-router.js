@@ -4,7 +4,7 @@ import pointController from '../controllers/point-controller';
 import authController from '../controllers/auth-controller';
 
 import { Auth } from '../middleware/auth-middleware';
-import ValidationEnvironmentPost from '../validation/company-post-validation';
+import ValidationPointPost from '../validation/point-post-validation';
 
 const router = express.Router();
 
@@ -15,7 +15,7 @@ router.get('/point/:id', Auth('gc'), pointController.getPoint);
 router.post(
   '/point',
   Auth('gc'),
-  ValidationEnvironmentPost,
+  ValidationPointPost,
   pointController.createPoint
 );
 
