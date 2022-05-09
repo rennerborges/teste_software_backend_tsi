@@ -22,5 +22,10 @@ router.post(
 );
 
 router.patch('/environment', Auth('g'), companyController.updateEnvironment);
+router.delete(
+  '/environment/:id',
+  Auth('g'),
+  companyController.deleteEnvironment
+);
 
 export default router;
