@@ -7,6 +7,7 @@ export const getUser = (req, res) => {
     dateOfBirth: new Date(),
     company: 1,
     role: 'g',
+    workload: 160,
   });
 };
 
@@ -21,6 +22,7 @@ export const getUsers = (req, res) => {
         dateOfBirth: new Date(),
         company: 1,
         role: 'c',
+        workload: 160,
       },
       {
         name: 'rafael',
@@ -30,6 +32,7 @@ export const getUsers = (req, res) => {
         dateOfBirth: new Date(),
         company: 1,
         role: 'c',
+        workload: 160,
       },
       {
         name: 'renner',
@@ -39,6 +42,7 @@ export const getUsers = (req, res) => {
         dateOfBirth: new Date(),
         company: 1,
         role: 'c',
+        workload: 160,
       },
       {
         name: 'daniel',
@@ -48,6 +52,7 @@ export const getUsers = (req, res) => {
         dateOfBirth: new Date(),
         company: 1,
         role: 'c',
+        workload: 160,
       },
     ],
   });
