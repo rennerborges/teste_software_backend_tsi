@@ -1,3 +1,5 @@
+import UserModel from '../models/client';
+
 export const getUser = (req, res) => {
   res.json({
     name: 'renner',
@@ -58,8 +60,29 @@ export const getUsers = (req, res) => {
   });
 };
 
-export const createUser = (req, res) => {
-  res.status(201).json({ user: req.body });
+export const createUser = async (req, res,next) => {
+  const {body} = req;
+  
+  try {
+    const user = new UserModel({
+      name: body.name,
+      password: body.password,
+      email: body.email,
+      company: body.companyId,
+      cpf: body.cpf,
+      tel: body.tel,
+      dateOfBirth: body.dateOfBirth,
+      role: body.role,
+      workload: body.workload,
+      enabled: true
+    });
+  
+    await user.save();
+  
+    res.status(201).json({ user });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const updateUser = (req, res) => {

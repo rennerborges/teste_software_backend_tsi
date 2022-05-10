@@ -1,7 +1,7 @@
-const moongose = require('mongoose');
+const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-modelShema = new moongose.modelShema({
+const modelSchema = new mongoose.Schema({
     name: String,
     email: String,
     cpf: String,
@@ -18,5 +18,5 @@ const modelName = 'users';
 if(mongoose.connection && mongoose.connection.models[modelName]){
     module.exports = mongoose.connection.models[modelName];//Conexão
 }else{
-    module.exports = mongoose.model(modelName,modelShema);//Criar nova conexão
+    module.exports = mongoose.model(modelName,modelSchema);//Criar nova conexão
 }

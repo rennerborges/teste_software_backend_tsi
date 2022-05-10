@@ -1,4 +1,4 @@
-const moongose = require('mongoose');
+const mongoose = require('mongoose');
 const express = require('express');
 
 import cors from 'cors';
@@ -8,9 +8,9 @@ import app from './app';
 
 dotenv.config({ path: './variables.env' });
 
-moongose.connect( process.env.DATABASE, { useNewUrlParser: true, useUnifiedTopology:true})
-moongose.Promise = global.Promise;
-moongose.connection.on('error',(error)=>{
+mongoose.connect( process.env.DATABASE, { useNewUrlParser: true, useUnifiedTopology:true})
+mongoose.Promise = global.Promise;
+mongoose.connection.on('error',(error)=>{
     console.error("ERRO: "+error.message); 
 });
 
