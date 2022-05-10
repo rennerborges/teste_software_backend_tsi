@@ -14,50 +14,12 @@ export const getUser = (req, res) => {
   });
 };
 
-export const getUsers = (req, res) => {
+export const getUsers = async (req, res) => {
+  //TODO buscar pela empresa do usuário
+  const users = await UserModel.find().select(['-password']);
+
   res.json({
-    users: [
-      {
-        name: 'renner',
-        email: 'renner@gmail.com',
-        cpf: '04447289105',
-        tel: '6499295-4946',
-        dateOfBirth: new Date(),
-        company: 1,
-        role: 'c',
-        workload: 160,
-      },
-      {
-        name: 'rafael',
-        email: 'rafael@gmail.com',
-        cpf: '487966215484',
-        tel: '6499514-4946',
-        dateOfBirth: new Date(),
-        company: 1,
-        role: 'c',
-        workload: 160,
-      },
-      {
-        name: 'renner',
-        email: 'renner@gmail.com',
-        cpf: '04447289105',
-        tel: '6499295-4946',
-        dateOfBirth: new Date(),
-        company: 1,
-        role: 'c',
-        workload: 160,
-      },
-      {
-        name: 'daniel',
-        email: 'daniel@gmail.com',
-        cpf: '54654665498',
-        tel: '6499514-5878',
-        dateOfBirth: new Date(),
-        company: 1,
-        role: 'c',
-        workload: 160,
-      },
-    ],
+    users,
   });
 };
 
