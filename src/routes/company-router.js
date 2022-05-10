@@ -5,6 +5,7 @@ import authController from '../controllers/auth-controller';
 
 import { Auth } from '../middleware/auth-middleware';
 import ValidationEnvironmentPost from '../validation/company-post-validation';
+import ValidationCompanyEdit from '../validation/company-edit-validation';
 
 const router = express.Router();
 
@@ -21,7 +22,12 @@ router.post(
   companyController.createEnvironment
 );
 
-router.patch('/company', Auth('g'), companyController.updateEnvironment);
+router.patch(
+  '/company',
+  Auth('g'),
+  ValidationCompanyEdit,
+  companyController.updateEnvironment
+);
 router.delete('/company/:id', Auth('g'), companyController.deleteEnvironment);
 
 export default router;
