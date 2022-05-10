@@ -1,4 +1,5 @@
 import UserModel from '../models/client';
+import { hashPassword } from '../util/password';
 
 export const getUser = (req, res) => {
   res.json({
@@ -60,13 +61,15 @@ export const getUsers = (req, res) => {
   });
 };
 
-export const createUser = async (req, res,next) => {
-  const {body} = req;
-  
+export const createUser = async (req, res, next) => {
+  const { body } = req;
+
   try {
+    const passwordHashed = await hashPassword(body.password);
+
     const user = new UserModel({
       name: body.name,
-      password: body.password,
+      password: passwordHashed,
       email: body.email,
       company: body.companyId,
       cpf: body.cpf,
@@ -74,11 +77,11 @@ export const createUser = async (req, res,next) => {
       dateOfBirth: body.dateOfBirth,
       role: body.role,
       workload: body.workload,
-      enabled: true
+      enabled: true,
     });
-  
+
     await user.save();
-  
+
     res.status(201).json({ user });
   } catch (error) {
     next(error);
