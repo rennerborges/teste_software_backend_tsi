@@ -14,7 +14,7 @@ export const login = (req, res) => {
       { id, user, password, permision: user === 'rafael' ? 'c' : 'g' },
       process.env.SECRET,
       {
-        expiresIn: 24 * 60, // expires in 24h
+        expiresIn: 24 * 60 * 60, // expires in 24h
       }
     );
     return res.status(200).json({
