@@ -9,8 +9,8 @@ modelShema = new moongose.modelShema({
     dateOfBirth: Date,
     company: Number,
     role: String,
-    enabled: Boolean,
-    workload: Number
+    workload: Number,
+    enabled: Boolean
 });
 
 const modelName = 'users';
