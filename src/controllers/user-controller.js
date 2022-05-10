@@ -1,17 +1,20 @@
+import mongoose from 'mongoose';
 import UserModel from '../models/client';
 import { hashPassword } from '../util/password';
 
-export const getUser = (req, res) => {
-  res.json({
-    name: 'renner',
-    email: 'renner@gmail.com',
-    cpf: '04447289105',
-    tel: '6499295-4946',
-    dateOfBirth: new Date(),
-    company: 1,
-    role: 'g',
-    workload: 160,
-  });
+export const getUser = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      throw new Error('Informe um id válido');
+    }
+
+    const user = await UserModel.findById(id).select(['-password']);
+    res.json({ user });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const getUsers = async (req, res) => {
