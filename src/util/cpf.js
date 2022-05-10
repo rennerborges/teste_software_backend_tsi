@@ -1,4 +1,6 @@
 export const isValidCpf = (cpf) => {
+  if (!cpf) return false;
+
   cpf = cpf.replace(/\D/g, '');
   if (cpf.toString().length != 11 || /^(\d)\1{10}$/.test(cpf)) return false;
   var result = true;
