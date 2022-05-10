@@ -1,10 +1,19 @@
 import * as yup from 'yup';
 import { isValidCpf } from '../util/cpf';
+import { isValidPassword } from '../util/password';
 import { isValidTel } from '../util/tel';
 
 const ValidationUserPost = (req, res, next) => {
   const schema = yup.object().shape({
     name: yup.string().required('O nome é necessário'),
+    password: yup
+      .string()
+      .required('A senha é necessária')
+      .test(
+        'is-password',
+        'Informe uma senha com no mínimo de oito caracteres, pelo menos, uma letra maiúscula, uma letra minúscula, um número e um caractere especial',
+        (value) => isValidPassword(value)
+      ),
     tel: yup
       .string()
       .required('O telefone é necessário')
