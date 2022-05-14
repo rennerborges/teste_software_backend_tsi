@@ -1,10 +1,16 @@
+import mongoose from 'mongoose';
 import * as yup from 'yup';
 import { isValidCpf } from '../util/cpf';
 import { isValidTel } from '../util/tel';
 
 const ValidationUserEdit = (req, res, next) => {
   const schema = yup.object().shape({
-    id: yup.string().required('O id do usuário é necessário'),
+    id: yup
+      .string()
+      .required('O id do usuário é necessário')
+      .test('is-id-mongo', 'Informe um ID válido', (value) =>
+        mongoose.Types.ObjectId.isValid(value)
+      ),
     name: yup.string(),
     tel: yup
       .string()

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import UserModel from '../models/client';
+import { removeValueUndefinedOrNull } from '../util/object';
 import { hashPassword } from '../util/password';
 
 export const getUser = async (req, res, next) => {
@@ -11,6 +12,10 @@ export const getUser = async (req, res, next) => {
     }
 
     const user = await UserModel.findById(id).select(['-password']);
+
+    if (!user || !user.enabled) {
+      return res.status(404).json({ message: 'User not found' });
+    }
     res.json({ user });
   } catch (error) {
     next(error);
@@ -28,6 +33,8 @@ export const getUsers = async (req, res) => {
 
 export const createUser = async (req, res, next) => {
   const { body } = req;
+
+  //TODO validar se o ID da company é válido
 
   try {
     const passwordHashed = await hashPassword(body.password);
@@ -53,12 +60,51 @@ export const createUser = async (req, res, next) => {
   }
 };
 
-export const updateUser = (req, res) => {
-  res.json({ status: 'ok' });
+export const updateUser = async (req, res, next) => {
+  const { body } = req;
+
+  try {
+    const bodyUpdate = removeValueUndefinedOrNull({
+      name: body.name,
+      password: body.password,
+      tel: body.tel,
+      workload: body.workload,
+    });
+
+    const user = await UserModel.findOneAndUpdate({ _id: body.id }, bodyUpdate);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json({ message: 'Successfully', user });
+  } catch (error) {
+    next(error);
+  }
 };
 
-export const deleteUser = (req, res) => {
-  res.json({ status: 'ok' });
+export const deleteUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      throw new Error('Informe um id válido');
+    }
+
+    const bodyUpdate = {
+      enabled: false,
+    };
+
+    const user = await UserModel.findOneAndUpdate({ _id: id }, bodyUpdate);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json({ message: 'Successfully' });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export default {
