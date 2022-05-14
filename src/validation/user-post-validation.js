@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import * as yup from 'yup';
 import { isValidCpf } from '../util/cpf';
 import { isValidPassword } from '../util/password';
@@ -26,7 +27,12 @@ const ValidationUserPost = (req, res, next) => {
       .test('is-cpf', 'Informe um CPF válido', (value) => isValidCpf(value)),
     email: yup.string().email().required('O e-mail é necessário'),
     dateOfBirth: yup.date().required('A data de nascimento é necessária'),
-    companyId: yup.string().required('O id da empresa é necessário'),
+    companyId: yup
+      .string()
+      .required('O id da empresa é necessário')
+      .test('is-id-mongo', 'Informe um ID válido', (value) =>
+        mongoose.Types.ObjectId.isValid(value)
+      ),
     role: yup
       .string()
       .required('Uma permissão é necessária')
