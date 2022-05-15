@@ -69,10 +69,14 @@ export const createUser = async (req, res, next) => {
 export const updateUser = async (req, res, next) => {
   const { body } = req;
 
+  const passwordHashed = body.password
+    ? await hashPassword(body.password)
+    : null;
+
   try {
     const bodyUpdate = removeValueUndefinedOrNull({
       name: body.name,
-      password: body.password,
+      password: passwordHashed,
       tel: body.tel,
       workload: body.workload,
     });
