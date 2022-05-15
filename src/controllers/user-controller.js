@@ -34,8 +34,6 @@ export const getUsers = async (req, res) => {
 export const createUser = async (req, res, next) => {
   const { body } = req;
 
-  //TODO validar se o ID da company é válido
-
   try {
     const passwordHashed = await hashPassword(body.password);
 

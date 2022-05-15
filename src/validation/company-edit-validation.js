@@ -7,7 +7,7 @@ const ValidationCompanyEdit = (req, res, next) => {
     id: yup
       .string()
       .required('O id da empresa é necessário')
-      .test('is-id-mongo', 'Informe um ID válido', (value) =>
+      .test('is-id-mongo', 'Informe um company id válido', (value) =>
         mongoose.Types.ObjectId.isValid(value)
       ),
     fantasyName: yup.string(),

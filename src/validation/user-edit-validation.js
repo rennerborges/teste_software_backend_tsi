@@ -8,7 +8,7 @@ const ValidationUserEdit = (req, res, next) => {
     id: yup
       .string()
       .required('O id do usuário é necessário')
-      .test('is-id-mongo', 'Informe um ID válido', (value) =>
+      .test('is-id-mongo', 'Informe um user id válido', (value) =>
         mongoose.Types.ObjectId.isValid(value)
       ),
     name: yup.string(),
