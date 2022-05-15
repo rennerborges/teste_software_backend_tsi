@@ -80,10 +80,10 @@ export const updateUser = async (req, res, next) => {
     const user = await UserModel.findOneAndUpdate({ _id: body.id }, bodyUpdate);
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: 'Usuário não encontrado' });
     }
 
-    res.json({ message: 'Successfully', user });
+    res.json({ message: 'Ação realizada com sucesso!' });
   } catch (error) {
     next(error);
   }
@@ -104,10 +104,10 @@ export const deleteUser = async (req, res) => {
     const user = await UserModel.findOneAndUpdate({ _id: id }, bodyUpdate);
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: 'Usuário não encontrado' });
     }
 
-    res.json({ message: 'Successfully' });
+    res.json({ message: 'Ação realizada com sucesso!' });
   } catch (error) {
     next(error);
   }

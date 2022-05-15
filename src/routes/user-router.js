@@ -9,7 +9,7 @@ import companyMiddleware from '../middleware/company-middleware';
 const router = express.Router();
 
 router.get('/users', Auth('g'), userController.getUsers);
-router.get('/user/:id', Auth('g'), userController.getUser);
+router.get('/user/:id', Auth('gc'), userController.getUser);
 router.post(
   '/user',
   Auth('g'),

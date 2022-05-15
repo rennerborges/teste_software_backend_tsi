@@ -74,10 +74,10 @@ export const updateEnvironment = async (req, res) => {
     );
 
     if (!company) {
-      return res.status(404).json({ message: 'Company not found' });
+      return res.status(404).json({ message: 'Empresa não encontrada' });
     }
 
-    res.json({ message: 'Successfully' });
+    res.json({ message: 'Ação realizada com sucesso!' });
   } catch (error) {
     next(error);
   }
@@ -101,10 +101,10 @@ export const deleteEnvironment = async (req, res, next) => {
     );
 
     if (!company) {
-      return res.status(404).json({ message: 'Company not found' });
+      return res.status(404).json({ message: 'Empresa não encontrada' });
     }
 
-    res.json({ message: 'Successfully' });
+    res.json({ message: 'Ação realizada com sucesso!' });
   } catch (error) {
     next(error);
   }
