@@ -37,7 +37,9 @@ export const createUser = async (req, res, next) => {
   try {
     const passwordHashed = await hashPassword(body.password);
 
-    const userAlreadyExists = await UserModel.findOne({ email: body.email });
+    const userAlreadyExists = await UserModel.findOne({
+      $or: [{ email: body.email }, { cpf: body.cpf }],
+    });
 
     if (userAlreadyExists) {
       throw new Error('Usuário já existente');
