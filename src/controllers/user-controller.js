@@ -12,7 +12,8 @@ export const getUser = async (req, res, next) => {
     }
 
     const user = await UserModel.findOne({
-      $and: [{ _id: id }, { companyId: req.user.companyId }],
+      _id: id,
+      companyId: req.user.companyId,
     }).select(['-password']);
 
     if (!user || !user.enabled) {
