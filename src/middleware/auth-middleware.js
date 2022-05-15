@@ -12,24 +12,23 @@ export function Auth(permision) {
     if (!token)
       return res
         .status(401)
-        .json({ auth: false, message: 'No token provided.' });
+        .json({ auth: false, message: 'O token não foi informado.' });
 
     jwt.verify(token, process.env.SECRET, function (err, decoded) {
       if (err) {
         return res
           .status(401)
-          .json({ auth: false, message: 'Failed to authenticate token.' });
+          .json({ auth: false, message: 'Falha ao autenticar o token.' });
       }
 
-      if (!permisions.includes(decoded.permision)) {
+      if (!permisions.includes(decoded.role)) {
         return res
           .status(403)
-          .json({ auth: false, message: 'Failed to autorization route.' });
+          .json({ auth: false, message: 'Usuário não autorizado.' });
       }
 
-      // se tudo estiver ok, salva no request para uso posterior
-      req.userId = decoded.id;
-      req.permision = decoded.permision;
+      req.user = decoded;
+
       next();
     });
   };
