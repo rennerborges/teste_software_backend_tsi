@@ -13,6 +13,7 @@ export const login = async (req, res) => {
 
   const userDatabase = await UserModel.findOne({
     email,
+    enabled: true,
   });
 
   if (!userDatabase || !bcrypt.compareSync(password, userDatabase.password)) {
