@@ -3,8 +3,8 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config({ path: './variables.env' });
 
-export function Auth(permision) {
-  const permisions = permision.split('');
+export function Auth(permision = '') {
+  const permisions = ['s', ...permision.split('')];
 
   return (req, res, next) => {
     var { token } = req.headers;

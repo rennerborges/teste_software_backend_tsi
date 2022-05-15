@@ -13,18 +13,18 @@ const router = express.Router();
 
 router.post('/login', ValidatorLogin, authController.login);
 
-router.get('/company', Auth('g'), companyController.getEnvironments);
+router.get('/companies', Auth(), companyController.getEnvironments);
 
 router.get(
   '/company/:id',
-  Auth('g'),
+  Auth('gc'),
   companyMiddleware.ValidateCompany,
   companyController.getEnvironment
 );
 
 router.post(
   '/company',
-  Auth('g'),
+  Auth(),
   ValidationEnvironmentPost,
   companyController.createEnvironment
 );
@@ -39,7 +39,7 @@ router.patch(
 
 router.delete(
   '/company/:id',
-  Auth('g'),
+  Auth(),
   companyMiddleware.ValidateCompany,
   companyController.deleteEnvironment
 );
