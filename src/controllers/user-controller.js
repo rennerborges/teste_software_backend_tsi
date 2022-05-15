@@ -100,7 +100,7 @@ export const updateUser = async (req, res, next) => {
   }
 };
 
-export const deleteUser = async (req, res) => {
+export const deleteUser = async (req, res, next) => {
   const { id } = req.params;
 
   try {
@@ -113,7 +113,7 @@ export const deleteUser = async (req, res) => {
     };
 
     const user = await UserModel.findOneAndUpdate(
-      { _id: body.id, companyId: req.user.companyId },
+      { _id: id, companyId: req.user.companyId },
       bodyUpdate
     );
 
