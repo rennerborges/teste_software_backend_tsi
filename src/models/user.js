@@ -8,7 +8,7 @@ const modelSchema = new mongoose.Schema({
   cpf: String,
   tel: String,
   dateOfBirth: Date,
-  company: Number,
+  companyId: String,
   role: String,
   workload: Number,
   enabled: Boolean,

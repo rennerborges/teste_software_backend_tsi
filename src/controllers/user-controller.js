@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import UserModel from '../models/client';
+import UserModel from '../models/user';
 import { removeValueUndefinedOrNull } from '../util/object';
 import { hashPassword } from '../util/password';
 
@@ -43,7 +43,7 @@ export const createUser = async (req, res, next) => {
       name: body.name,
       password: passwordHashed,
       email: body.email,
-      company: body.companyId,
+      companyId: body.companyId,
       cpf: body.cpf,
       tel: body.tel,
       dateOfBirth: body.dateOfBirth,

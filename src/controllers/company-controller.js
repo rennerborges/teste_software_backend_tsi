@@ -75,7 +75,7 @@ export const updateEnvironment = async (req, res) => {
   }
 };
 
-export const deleteEnvironment = async (req, res) => {
+export const deleteEnvironment = async (req, res, next) => {
   const { id } = req.params;
 
   try {
