@@ -37,6 +37,12 @@ export const createUser = async (req, res, next) => {
   try {
     const passwordHashed = await hashPassword(body.password);
 
+    const userAlreadyExists = await UserModel.findOne({ email: body.email });
+
+    if (userAlreadyExists) {
+      throw new Error('Usuário já existente');
+    }
+
     const user = new UserModel({
       name: body.name,
       password: passwordHashed,
