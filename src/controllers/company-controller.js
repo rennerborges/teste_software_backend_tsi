@@ -6,6 +6,7 @@ export const getEnvironment = async (req, res, next) => {
   const { id } = req.params;
 
   try {
+    console.log('\n\n\npassei');
     if (!mongoose.Types.ObjectId.isValid(id)) {
       throw new Error('Informe um id válido');
     }
