@@ -2,8 +2,8 @@ export const removeValueUndefinedOrNull = (object) => {
   const cloneObject = { ...object };
 
   Object.keys(cloneObject).forEach((key) => {
-    if (!object[key]) {
-      delete object[key];
+    if (!cloneObject[key]) {
+      delete cloneObject[key];
     }
   });
 
