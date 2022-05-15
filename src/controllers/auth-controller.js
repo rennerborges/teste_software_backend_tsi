@@ -11,10 +11,6 @@ export const login = async (req, res) => {
     body: { email, password },
   } = req;
 
-  const passwordHashed = await hashPassword(password);
-
-  console.log(passwordHashed);
-
   const userDatabase = await UserModel.findOne({
     email,
   });

@@ -4,12 +4,19 @@ import userController from '../controllers/user-controller';
 import ValidationUserPost from '../validation/user-post-validation';
 import { Auth } from '../middleware/auth-middleware';
 import ValidationUserEdit from '../validation/user-edit-validation';
+import companyMiddleware from '../middleware/company-middleware';
 
 const router = express.Router();
 
 router.get('/users', Auth('g'), userController.getUsers);
 router.get('/user/:id', Auth('g'), userController.getUser);
-router.post('/user', Auth('g'), ValidationUserPost, userController.createUser);
+router.post(
+  '/user',
+  Auth('g'),
+  ValidationUserPost,
+  companyMiddleware.ValidateCompany,
+  userController.createUser
+);
 router.patch('/user', Auth('g'), ValidationUserEdit, userController.updateUser);
 router.delete('/user/:id', Auth('g'), userController.deleteUser);
 

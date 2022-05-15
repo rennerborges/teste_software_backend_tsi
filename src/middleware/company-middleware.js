@@ -1,7 +1,7 @@
 import CompanyModel from '../models/company';
 
 export const ValidateCompany = async (req, res, next) => {
-  const id = req.params.id || req.body.id;
+  const id = req.params.id || req.body.id || req.body.companyId;
 
   const company = await CompanyModel.findById(id);
 
@@ -10,8 +10,7 @@ export const ValidateCompany = async (req, res, next) => {
   }
 
   const { user } = req;
-  console.log('id', id);
-  console.log('user.companyId', user.companyId);
+
   if (user.companyId !== id) {
     return res
       .status(403)
