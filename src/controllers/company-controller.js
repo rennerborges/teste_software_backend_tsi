@@ -1,47 +1,53 @@
-export const getEnvironment = (req, res) => {
+import mongoose from 'mongoose';
+import CompanyModel from '../models/company';
+
+export const getEnvironment = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      throw new Error('Informe um id válido');
+    }
+
+    const company = await CompanyModel.findById(id);
+
+    if (!company || !company.enabled) {
+      return res.status(404).json({ message: 'Company not found' });
+    }
+
+    res.json({ company });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getEnvironments = async (req, res) => {
+  const companies = await CompanyModel.find();
+
   res.json({
-    environment: {
-      fantasyName: 'Renner Bars',
-      corporateName: 'Renner Bars Corporate',
-      cnpj: '68035847000145',
-      areaOfOperation: 'Bar',
-    },
+    companies,
   });
 };
 
-export const getEnvironments = (req, res) => {
-  res.json({
-    environments: [
-      {
-        fantasyName: 'Renner Bars',
-        corporateName: 'Renner Bars Corporate',
-        cnpj: '68035847000145',
-        areaOfOperation: 'Bar',
-      },
-      {
-        fantasyName: 'Neco Pier',
-        corporateName: 'Neco Pier Food',
-        cnpj: '55218414000183',
-        areaOfOperation: 'Comida',
-      },
-      {
-        fantasyName: 'Rafael Auto Peça',
-        corporateName: 'Rafa conserta carro',
-        cnpj: '48842115000150',
-        areaOfOperation: 'Auto center',
-      },
-      {
-        fantasyName: 'Daniel Scene',
-        corporateName: 'Scene one',
-        cnpj: '72826078000170',
-        areaOfOperation: 'Scene',
-      },
-    ],
-  });
-};
+export const createEnvironment = async (req, res) => {
+  const { body } = req;
 
-export const createEnvironment = (req, res) => {
-  res.json({ environment: req.body });
+  try {
+    const company = new CompanyModel({
+      fantasyName: body.fantasyName,
+      corporateName: body.corporateName,
+      cnpj: body.cnpj,
+      company: body.companyId,
+      areaOfOperation: body.areaOfOperation,
+      enabled: true,
+    });
+
+    await company.save();
+
+    res.status(201).json({ company });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const updateEnvironment = (req, res) => {
