@@ -69,14 +69,37 @@ export const updateEnvironment = async (req, res) => {
       return res.status(404).json({ message: 'Company not found' });
     }
 
-    res.json({ message: 'Successfully', company });
+    res.json({ message: 'Successfully' });
   } catch (error) {
     next(error);
   }
 };
 
 export const deleteEnvironment = async (req, res) => {
-  res.json({ status: 'ok' });
+  const { id } = req.params;
+
+  try {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      throw new Error('Informe um id válido');
+    }
+
+    const bodyUpdate = {
+      enabled: false,
+    };
+
+    const company = await CompanyModel.findOneAndUpdate(
+      { _id: id },
+      bodyUpdate
+    );
+
+    if (!company) {
+      return res.status(404).json({ message: 'Company not found' });
+    }
+
+    res.json({ message: 'Successfully' });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export default {
