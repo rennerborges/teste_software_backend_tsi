@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import CompanyModel from '../models/company';
+import { removeValueUndefinedOrNull } from '../util/object';
 
 export const getEnvironment = async (req, res, next) => {
   const { id } = req.params;
@@ -37,7 +38,6 @@ export const createEnvironment = async (req, res) => {
       fantasyName: body.fantasyName,
       corporateName: body.corporateName,
       cnpj: body.cnpj,
-      company: body.companyId,
       areaOfOperation: body.areaOfOperation,
       enabled: true,
     });
@@ -50,11 +50,32 @@ export const createEnvironment = async (req, res) => {
   }
 };
 
-export const updateEnvironment = (req, res) => {
-  res.json({ status: 'ok' });
+export const updateEnvironment = async (req, res) => {
+  const { body } = req;
+
+  try {
+    const bodyUpdate = removeValueUndefinedOrNull({
+      fantasyName: body.fantasyName,
+      corporateName: body.corporateName,
+      areaOfOperation: body.areaOfOperation,
+    });
+
+    const company = await CompanyModel.findOneAndUpdate(
+      { _id: body.id },
+      bodyUpdate
+    );
+
+    if (!company) {
+      return res.status(404).json({ message: 'Company not found' });
+    }
+
+    res.json({ message: 'Successfully', company });
+  } catch (error) {
+    next(error);
+  }
 };
 
-export const deleteEnvironment = (req, res) => {
+export const deleteEnvironment = async (req, res) => {
   res.json({ status: 'ok' });
 };
 

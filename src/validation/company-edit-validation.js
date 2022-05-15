@@ -1,9 +1,15 @@
+import mongoose from 'mongoose';
 import * as yup from 'yup';
 import { isValidCnpj } from '../util/cnpj';
 
 const ValidationCompanyEdit = (req, res, next) => {
   const schema = yup.object().shape({
-    id: yup.string().required('O id da empresa é necessário'),
+    id: yup
+      .string()
+      .required('O id da empresa é necessário')
+      .test('is-id-mongo', 'Informe um ID válido', (value) =>
+        mongoose.Types.ObjectId.isValid(value)
+      ),
     fantasyName: yup.string(),
     corporateName: yup.string(),
     cnpj: yup
