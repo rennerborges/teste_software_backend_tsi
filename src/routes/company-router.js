@@ -25,7 +25,6 @@ router.get(
 router.post(
   '/company',
   Auth('g'),
-  companyMiddleware.ValidateCompany,
   ValidationEnvironmentPost,
   companyController.createEnvironment
 );
