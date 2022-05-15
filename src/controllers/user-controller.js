@@ -11,7 +11,9 @@ export const getUser = async (req, res, next) => {
       throw new Error('Informe um id válido');
     }
 
-    const user = await UserModel.findById(id).select(['-password']);
+    const user = await UserModel.findOne({
+      $and: [{ _id: id }, { companyId: req.user.companyId }],
+    }).select(['-password']);
 
     if (!user || !user.enabled) {
       return res.status(404).json({ message: 'User not found' });
@@ -23,8 +25,9 @@ export const getUser = async (req, res, next) => {
 };
 
 export const getUsers = async (req, res) => {
-  //TODO buscar pela empresa do usuário
-  const users = await UserModel.find().select(['-password']);
+  const users = await UserModel.find({
+    companyId: req.user.companyId,
+  }).select(['-password']);
 
   res.json({
     users,

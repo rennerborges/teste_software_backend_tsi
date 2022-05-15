@@ -11,7 +11,7 @@ export const ValidateCompany = async (req, res, next) => {
 
   const { user } = req;
 
-  if (user.companyId !== id && user.role !== 's') {
+  if (user.companyId !== id) {
     return res
       .status(403)
       .json({ auth: false, message: 'Usuário não autorizado nessa empresa.' });
