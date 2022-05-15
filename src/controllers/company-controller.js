@@ -30,10 +30,18 @@ export const getEnvironments = async (req, res) => {
   });
 };
 
-export const createEnvironment = async (req, res) => {
+export const createEnvironment = async (req, res, next) => {
   const { body } = req;
 
   try {
+    const companyAlreadyExists = await CompanyModel.findOne({
+      cnpj: body.cnpj,
+    });
+
+    if (companyAlreadyExists) {
+      throw new Error('Empresa já existente');
+    }
+
     const company = new CompanyModel({
       fantasyName: body.fantasyName,
       corporateName: body.corporateName,
