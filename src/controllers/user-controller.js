@@ -112,7 +112,10 @@ export const deleteUser = async (req, res) => {
       enabled: false,
     };
 
-    const user = await UserModel.findOneAndUpdate({ _id: id }, bodyUpdate);
+    const user = await UserModel.findOneAndUpdate(
+      { _id: body.id, companyId: req.user.companyId },
+      bodyUpdate
+    );
 
     if (!user) {
       return res.status(404).json({ message: 'Usuário não encontrado' });
