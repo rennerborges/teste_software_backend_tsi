@@ -85,7 +85,10 @@ export const updateUser = async (req, res, next) => {
       workload: body.workload,
     });
 
-    const user = await UserModel.findOneAndUpdate({ _id: body.id }, bodyUpdate);
+    const user = await UserModel.findOneAndUpdate(
+      { _id: body.id, companyId: req.user.companyId },
+      bodyUpdate
+    );
 
     if (!user) {
       return res.status(404).json({ message: 'Usuário não encontrado' });
