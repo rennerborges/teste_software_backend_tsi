@@ -66,7 +66,7 @@ export const createUser = async (req, res, next) => {
       enabled: true,
     });
 
-    // await user.save();
+    await user.save();
 
     const templateEmail = getTemplateRegisterUser({
       username: body.name,
