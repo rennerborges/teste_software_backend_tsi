@@ -3,6 +3,7 @@ import UserModel from '../models/user';
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
 import getTemplateLogin from '../../services/email/templates/login';
+import getTemplateRegisterUser from '../../services/email/templates/login';
 
 dotenv.config({ path: './variables.env' });
 
@@ -47,7 +48,7 @@ export const login = async (req, res) => {
     subject: 'Speed point subject',
     from: `Speed Point <${emailConfig.user}>`,
     to: [userDatabase.email],
-    html: getTemplateLogin(),
+    html: getTemplateRegisterUser(),
   });
 };
 

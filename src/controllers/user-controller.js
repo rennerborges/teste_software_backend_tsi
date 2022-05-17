@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
+import sendEmail from '../../services/email/email-controller';
+import getTemplateRegisterUser from '../../services/email/templates/login';
 import UserModel from '../models/user';
+import { FormatDate } from '../util/date';
 import { removeValueUndefinedOrNull } from '../util/object';
 import { hashPassword } from '../util/password';
 
@@ -65,6 +68,20 @@ export const createUser = async (req, res, next) => {
     await user.save();
 
     res.status(201).json({ user });
+
+    const templateEmail = getTemplateRegisterUser({
+      username: body.name,
+      companyName: req.company.fantasyName,
+      date: FormatDate('LL'),
+    });
+
+    sendEmail({
+      text: 'Speed Point - Cadastro realizado com sucesso!',
+      subject: 'Speed Point - Cadastro realizado com sucesso!',
+      from: `Speed Point <${emailConfig.user}>`,
+      to: [userDatabase.email],
+      html: templateEmail,
+    });
   } catch (error) {
     next(error);
   }
