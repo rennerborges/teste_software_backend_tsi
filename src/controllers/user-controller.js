@@ -5,6 +5,7 @@ import UserModel from '../models/user';
 import { FormatDate } from '../util/date';
 import { removeValueUndefinedOrNull } from '../util/object';
 import { hashPassword } from '../util/password';
+import emailConfig from '../../config/email';
 
 export const getUser = async (req, res, next) => {
   const { id } = req.params;
@@ -65,9 +66,7 @@ export const createUser = async (req, res, next) => {
       enabled: true,
     });
 
-    await user.save();
-
-    res.status(201).json({ user });
+    // await user.save();
 
     const templateEmail = getTemplateRegisterUser({
       username: body.name,
@@ -79,9 +78,11 @@ export const createUser = async (req, res, next) => {
       text: 'Speed Point - Cadastro realizado com sucesso!',
       subject: 'Speed Point - Cadastro realizado com sucesso!',
       from: `Speed Point <${emailConfig.user}>`,
-      to: [userDatabase.email],
+      to: [body.email],
       html: templateEmail,
     });
+
+    res.status(201).json({ user });
   } catch (error) {
     next(error);
   }

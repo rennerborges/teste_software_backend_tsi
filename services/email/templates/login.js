@@ -59,7 +59,7 @@ export default function getTemplateRegisterUser({
                                                                               <tbody>
                                                                                   <tr>
                                                                                       <td align="center" class="esd-block-image" style="font-size: 0px;">
-                                                                                          <a target="_blank"><img class="adapt-img" src="https://vfqdez.stripocdn.email/content/guids/CABINET_c5b3213175f1f8dc7c0dff5001a42fcc/images/1_7MF.png" alt style="display: block;" width="205"></a>
+                                                                                        <img class="adapt-img" src="https://vfqdez.stripocdn.email/content/guids/CABINET_c5b3213175f1f8dc7c0dff5001a42fcc/images/1_7MF.png" alt style="display: block;" width="205">
                                                                                       </td>
                                                                                   </tr>
                                                                               </tbody>
@@ -80,7 +80,7 @@ export default function getTemplateRegisterUser({
                                                                               <tbody>
                                                                                   <tr>
                                                                                       <td align="center" class="esd-block-text">
-                                                                                          <p style="font-family: roboto, 'helvetica neue', helvetica, arial, sans-serif; font-size: 23px;"><strong>Olá ${username}, seja bem vindo!</strong></p>
+                                                                                          <p style="margin-bottom: 0; font-family: roboto, 'helvetica neue', helvetica, arial, sans-serif; font-size: 23px;"><strong>Olá ${username}, seja bem vindo!</strong></p>
                                                                                       </td>
                                                                                   </tr>
                                                                               </tbody>
@@ -101,7 +101,7 @@ export default function getTemplateRegisterUser({
                                                                               <tbody>
                                                                                   <tr>
                                                                                       <td align="center" class="esd-block-text es-p20b">
-                                                                                          <p style="font-family: roboto, 'helvetica neue', helvetica, arial, sans-serif; font-size: 16px;">Seu e-mail foi vinculado a uma conta na empresa ${companyName} em ${date}.</p>
+                                                                                          <p style="padding: 0px 20px; font-family: roboto, 'helvetica neue', helvetica, arial, sans-serif; font-size: 16px;">Seu e-mail foi vinculado a uma conta na empresa ${companyName} em ${date}.</p>
                                                                                       </td>
                                                                                   </tr>
                                                                               </tbody>
