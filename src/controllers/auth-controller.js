@@ -2,8 +2,6 @@ import jwt from 'jsonwebtoken';
 import UserModel from '../models/user';
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
-import getTemplateLogin from '../../services/email/templates/login';
-import getTemplateRegisterUser from '../../services/email/templates/login';
 
 dotenv.config({ path: './variables.env' });
 
@@ -41,14 +39,6 @@ export const login = async (req, res) => {
   res.status(200).json({
     auth: true,
     token: token,
-  });
-
-  sendEmail({
-    text: 'Speed Point - Login',
-    subject: 'Speed point subject',
-    from: `Speed Point <${emailConfig.user}>`,
-    to: [userDatabase.email],
-    html: getTemplateRegisterUser(),
   });
 };
 
