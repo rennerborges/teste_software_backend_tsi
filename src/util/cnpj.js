@@ -67,6 +67,9 @@ export function isValidCnpj(value) {
   return digit1 === digits[1];
 }
 
+export const removeMaskCnpj = (value) => value.replace(/[-.]/g, '');
+
 export default {
   isValidCnpj,
+  removeMaskCnpj,
 };

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import CompanyModel from '../models/company';
+import { removeMaskCnpj } from '../util/cnpj';
 import { removeValueUndefinedOrNull } from '../util/object';
 
 export const getEnvironment = async (req, res, next) => {
@@ -45,7 +46,7 @@ export const createEnvironment = async (req, res, next) => {
     const company = new CompanyModel({
       fantasyName: body.fantasyName,
       corporateName: body.corporateName,
-      cnpj: body.cnpj,
+      cnpj: removeMaskCnpj(body.cnpj),
       areaOfOperation: body.areaOfOperation,
       enabled: true,
     });

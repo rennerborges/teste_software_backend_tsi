@@ -6,6 +6,8 @@ import { FormatDate } from '../util/date';
 import { removeValueUndefinedOrNull } from '../util/object';
 import { hashPassword } from '../util/password';
 import emailConfig from '../../config/email';
+import { removeMaskCpf } from '../util/cpf';
+import { removeMaskTel } from '../util/tel';
 
 export const getUser = async (req, res, next) => {
   const { id } = req.params;
@@ -59,8 +61,8 @@ export const createUser = async (req, res, next) => {
       password: passwordHashed,
       email: body.email,
       companyId: body.companyId,
-      cpf: body.cpf,
-      tel: body.tel,
+      cpf: removeMaskCpf(body.cpf),
+      tel: removeMaskTel(body.tel),
       dateOfBirth: body.dateOfBirth,
       role: body.role,
       workload: body.workload,
@@ -100,7 +102,7 @@ export const updateUser = async (req, res, next) => {
     const bodyUpdate = removeValueUndefinedOrNull({
       name: body.name,
       password: passwordHashed,
-      tel: body.tel,
+      tel: removeMaskTel(body.tel),
       workload: body.workload,
     });
 
