@@ -1,7 +1,6 @@
 import express from 'express';
 
 import pointController from '../controllers/point-controller';
-import authController from '../controllers/auth-controller';
 
 import { Auth } from '../middleware/auth-middleware';
 import ValidationPointPost from '../validation/point-post-validation';
@@ -16,7 +15,7 @@ router.post(
   '/point',
   Auth('gc'),
   ValidationPointPost,
-  pointController.createPoint
+  pointController.createPoint,
 );
 
 router.patch('/point', Auth('gc'), pointController.updatePoint);

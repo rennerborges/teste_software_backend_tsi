@@ -23,5 +23,6 @@ export default async function sendEmail({ text, subject, to, html }) {
     html,
   });
 
+  // eslint-disable-next-line no-console
   console.log(mailSent);
 }

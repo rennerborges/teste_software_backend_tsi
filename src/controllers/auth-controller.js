@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
-import UserModel from '../models/user';
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
+import UserModel from '../models/user';
 
 dotenv.config({ path: './variables.env' });
 
@@ -38,7 +38,7 @@ export const login = async (req, res) => {
 
   res.status(200).json({
     auth: true,
-    token: token,
+    token,
   });
 };
 

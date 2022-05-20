@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
-const express = require('express');
-
+/* eslint-disable no-console */
 import cors from 'cors';
 import dotenv from 'dotenv';
 
+import mongoose from 'mongoose';
+import express from 'express';
 import app from './app';
 
 dotenv.config({ path: './variables.env' });
@@ -14,7 +14,7 @@ mongoose.connect(process.env.DATABASE, {
 });
 mongoose.Promise = global.Promise;
 mongoose.connection.on('error', (error) => {
-  console.error('ERRO: ' + error.message);
+  console.error(`ERRO: ${error.message}`);
 });
 
 const server = express();

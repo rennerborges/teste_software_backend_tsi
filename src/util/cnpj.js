@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-unused-expressions */
 export function isValidCnpj(value) {
   if (!value) return false;
 

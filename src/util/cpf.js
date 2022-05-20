@@ -1,6 +1,13 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable radix */
+/* eslint-disable no-var */
+/* eslint-disable one-var */
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable vars-on-top */
 export const isValidCpf = (cpf) => {
   if (!cpf) return false;
 
+  // eslint-disable-next-line no-param-reassign
   cpf = cpf.replace(/\D/g, '');
   if (cpf.toString().length != 11 || /^(\d)\1{10}$/.test(cpf)) return false;
   var result = true;

@@ -19,14 +19,14 @@ router.get(
   '/company/:id',
   Auth('gc'),
   companyMiddleware.ValidateCompany,
-  companyController.getEnvironment
+  companyController.getEnvironment,
 );
 
 router.post(
   '/company',
   Auth(),
   ValidationEnvironmentPost,
-  companyController.createEnvironment
+  companyController.createEnvironment,
 );
 
 router.patch(
@@ -34,14 +34,14 @@ router.patch(
   Auth('g'),
   companyMiddleware.ValidateCompany,
   ValidationCompanyEdit,
-  companyController.updateEnvironment
+  companyController.updateEnvironment,
 );
 
 router.delete(
   '/company/:id',
   Auth(),
   companyMiddleware.ValidateCompany,
-  companyController.deleteEnvironment
+  companyController.deleteEnvironment,
 );
 
 export default router;

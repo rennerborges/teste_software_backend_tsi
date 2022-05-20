@@ -9,7 +9,7 @@ const ValidationUserEdit = (req, res, next) => {
       .string()
       .required('O id do usuário é necessário')
       .test('is-id-mongo', 'Informe um user id válido', (value) =>
-        mongoose.Types.ObjectId.isValid(value)
+        mongoose.Types.ObjectId.isValid(value),
       ),
     name: yup.string(),
     tel: yup
@@ -17,14 +17,14 @@ const ValidationUserEdit = (req, res, next) => {
       .test(
         'is-tel',
         'É necessário informar um telefone válido',
-        (value) => !value || isValidTel(value)
+        (value) => !value || isValidTel(value),
       ),
     cpf: yup
       .string()
       .test(
         'is-cpf',
         'Informe um CPF válido',
-        (value) => !value || isValidCpf(value)
+        (value) => !value || isValidCpf(value),
       ),
     email: yup.string().email(),
     dateOfBirth: yup.date(),
@@ -33,7 +33,7 @@ const ValidationUserEdit = (req, res, next) => {
       .test(
         'is-role',
         'Informe uma permissão existente',
-        (value) => !value || value === 'g' || value === 'c'
+        (value) => !value || value === 'g' || value === 'c',
       ),
     workload: yup.number().min(1),
   });

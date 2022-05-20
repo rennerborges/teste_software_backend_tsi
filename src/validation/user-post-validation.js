@@ -13,13 +13,13 @@ const ValidationUserPost = (req, res, next) => {
       .test(
         'is-password',
         'Informe uma senha com no mínimo de oito caracteres, pelo menos, uma letra maiúscula, uma letra minúscula, um número e um caractere especial',
-        (value) => isValidPassword(value)
+        (value) => isValidPassword(value),
       ),
     tel: yup
       .string()
       .required('O telefone é necessário')
       .test('is-tel', 'É necessário informar um telefone válido', (value) =>
-        isValidTel(value)
+        isValidTel(value),
       ),
     cpf: yup
       .string()
@@ -31,7 +31,7 @@ const ValidationUserPost = (req, res, next) => {
       .string()
       .required('O id da empresa é necessário')
       .test('is-id-mongo', 'Informe um company id válido', (value) =>
-        mongoose.Types.ObjectId.isValid(value)
+        mongoose.Types.ObjectId.isValid(value),
       ),
     role: yup
       .string()
@@ -39,7 +39,7 @@ const ValidationUserPost = (req, res, next) => {
       .test(
         'is-role',
         'Informe uma permissão existente',
-        (value) => value === 'g' || value === 'c'
+        (value) => value === 'g' || value === 'c',
       ),
     workload: yup.number().min(1).required('A carga horária é necessária'),
   });

@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 import { MomentSpeed } from '../../../src/util/date';
 
 export default function getTemplateRegisterUser({

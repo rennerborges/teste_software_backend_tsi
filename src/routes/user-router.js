@@ -15,7 +15,7 @@ router.post(
   Auth('g'),
   ValidationUserPost,
   companyMiddleware.ValidateCompany,
-  userController.createUser
+  userController.createUser,
 );
 router.patch('/user', Auth('g'), ValidationUserEdit, userController.updateUser);
 router.delete('/user/:id', Auth('g'), userController.deleteUser);

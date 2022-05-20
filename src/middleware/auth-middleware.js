@@ -1,24 +1,27 @@
 import jwt from 'jsonwebtoken';
 
 import dotenv from 'dotenv';
+
 dotenv.config({ path: './variables.env' });
 
 export function Auth(permision = '') {
   const permisions = ['s', ...permision.split('')];
 
   return (req, res, next) => {
-    var { token } = req.headers;
+    const { token } = req.headers;
 
-    if (!token)
+    if (!token) {
       return res
         .status(401)
         .json({ auth: false, message: 'O token não foi informado.' });
+    }
 
-    jwt.verify(token, process.env.SECRET, function (err, decoded) {
+    jwt.verify(token, process.env.SECRET, (err, decoded) => {
       if (err) {
-        return res
-          .status(401)
-          .json({ auth: false, message: 'Falha ao autenticar o token.' });
+        return res.status(401).json({
+          auth: false,
+          message: 'Falha ao autenticar o token.',
+        });
       }
 
       if (!permisions.includes(decoded.role)) {

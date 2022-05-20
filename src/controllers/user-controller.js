@@ -23,6 +23,7 @@ export const getUser = async (req, res, next) => {
     if (!user || !user.enabled) {
       return res.status(404).json({ message: 'User not found' });
     }
+
     res.json({ user });
   } catch (error) {
     next(error);
@@ -66,7 +67,7 @@ export const createUser = async (req, res, next) => {
       enabled: true,
     });
 
-    await user.save();
+    // await user.save();
 
     const templateEmail = getTemplateRegisterUser({
       username: body.name,
@@ -105,7 +106,7 @@ export const updateUser = async (req, res, next) => {
 
     const user = await UserModel.findOneAndUpdate(
       { _id: body.id, companyId: req.user.companyId },
-      bodyUpdate
+      bodyUpdate,
     );
 
     if (!user) {
@@ -132,7 +133,7 @@ export const deleteUser = async (req, res, next) => {
 
     const user = await UserModel.findOneAndUpdate(
       { _id: id, companyId: req.user.companyId },
-      bodyUpdate
+      bodyUpdate,
     );
 
     if (!user) {

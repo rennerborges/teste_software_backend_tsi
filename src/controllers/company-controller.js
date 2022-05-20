@@ -58,7 +58,7 @@ export const createEnvironment = async (req, res, next) => {
   }
 };
 
-export const updateEnvironment = async (req, res) => {
+export const updateEnvironment = async (req, res, next) => {
   const { body } = req;
 
   try {
@@ -70,7 +70,7 @@ export const updateEnvironment = async (req, res) => {
 
     const company = await CompanyModel.findOneAndUpdate(
       { _id: body.id },
-      bodyUpdate
+      bodyUpdate,
     );
 
     if (!company) {
@@ -97,7 +97,7 @@ export const deleteEnvironment = async (req, res, next) => {
 
     const company = await CompanyModel.findOneAndUpdate(
       { _id: id },
-      bodyUpdate
+      bodyUpdate,
     );
 
     if (!company) {

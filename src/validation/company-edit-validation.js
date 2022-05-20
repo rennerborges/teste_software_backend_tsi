@@ -8,7 +8,7 @@ const ValidationCompanyEdit = (req, res, next) => {
       .string()
       .required('O id da empresa é necessário')
       .test('is-id-mongo', 'Informe um company id válido', (value) =>
-        mongoose.Types.ObjectId.isValid(value)
+        mongoose.Types.ObjectId.isValid(value),
       ),
     fantasyName: yup.string(),
     corporateName: yup.string(),
@@ -17,7 +17,7 @@ const ValidationCompanyEdit = (req, res, next) => {
       .test(
         'is-cnpj',
         'Informe um CNPJ válido',
-        (value) => !value || isValidCnpj(value)
+        (value) => !value || isValidCnpj(value),
       ),
     areaOfOperation: yup.string(),
   });

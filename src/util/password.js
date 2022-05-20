@@ -9,8 +9,7 @@ export const isValidPassword = (value) => {
   return regex.test(value);
 };
 
-export const hashPassword = async (password) => {
-  return bcrypt.hash(password, Number(process.env.SALT));
-};
+export const hashPassword = async (password) =>
+  bcrypt.hash(password, Number(process.env.SALT));
 
 export default { isValidPassword };
