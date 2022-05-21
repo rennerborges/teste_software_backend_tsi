@@ -19,6 +19,7 @@
         "object-curly-newline": "off",
         "import/no-named-as-default-member": "off",
         "consistent-return":"off",
-        "func-names": "error"
+        "func-names": "error",
+        "no-trailing-spaces": "off"
     }
 }

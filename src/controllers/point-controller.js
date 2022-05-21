@@ -1,4 +1,6 @@
 export const getPoint = (req, res) => {
+  /* #swagger.tags = ["Pontos"] */
+
   res.json({
     date: new Date(),
     user: 1,
@@ -7,6 +9,7 @@ export const getPoint = (req, res) => {
 };
 
 export const getPoints = (req, res) => {
+  /* #swagger.tags = ["Pontos"] */
   res.json({
     users: [
       {
@@ -34,10 +37,12 @@ export const getPoints = (req, res) => {
 };
 
 export const createPoint = (req, res) => {
+  /* #swagger.tags = ["Pontos"] */
   res.status(201).json({ point: req.body });
 };
 
 export const updatePoint = (req, res) => {
+  /* #swagger.tags = ["Pontos"] */
   res.json({ status: 'ok' });
 };
 

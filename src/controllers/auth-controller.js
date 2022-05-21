@@ -6,6 +6,18 @@ import UserModel from '../models/user';
 dotenv.config({ path: './variables.env' });
 
 export const login = async (req, res) => {
+  /* #swagger.security = [] */
+  /* #swagger.tags = ["Autenticação"] */
+  /* #swagger.requestBody = { 
+    required: true, 
+    content: { 
+      "application/json": { 
+        schema: { $ref: "#/components/schemas/Login" }, 
+      } 
+    } 
+    } 
+  */
+
   const {
     body: { email, password },
   } = req;

@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 
 import mongoose from 'mongoose';
 import express from 'express';
+import swaggerUi from 'swagger-ui-express';
+import swaggerFile from './swagger/swagger_output.json';
 import app from './app';
 
 dotenv.config({ path: './variables.env' });
@@ -21,6 +23,7 @@ const server = express();
 server.use(cors());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+server.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 server.use('/', app);
 
 server.listen(process.env.PORT, () => {

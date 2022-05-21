@@ -1,0 +1,544 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API SpeedPoint",
+    "description": "Ambiente com as rotas do SpeedPoint"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:7779/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Autenticação",
+      "description": "Responsável por autenticar os usuários"
+    },
+    {
+      "name": "Empresas",
+      "description": "Responsável pelas empresas onde o usuário estára vinculado para registar um ponto"
+    },
+    {
+      "name": "Usuários",
+      "description": "Responsável pelos usuários vinculados a uma empresa que usarão a aplicação"
+    },
+    {
+      "name": "Pontos",
+      "description": "Registros do honorários dos usuários"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "Autenticação"
+        ],
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Não autorizado"
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/companies": {
+      "get": {
+        "tags": [
+          "Empresas"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      }
+    },
+    "/company/{id}": {
+      "get": {
+        "tags": [
+          "Empresas"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          },
+          "404": {
+            "description": "Não Encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Empresas"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          },
+          "404": {
+            "description": "Não Encontrado"
+          }
+        }
+      }
+    },
+    "/company": {
+      "post": {
+        "tags": [
+          "Empresas"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Empresas"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          },
+          "404": {
+            "description": "Não Encontrado"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "Usuários"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "get": {
+        "tags": [
+          "Usuários"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          },
+          "404": {
+            "description": "Não Encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Usuários"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          },
+          "404": {
+            "description": "Não Encontrado"
+          }
+        }
+      }
+    },
+    "/user": {
+      "post": {
+        "tags": [
+          "Usuários"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          },
+          "404": {
+            "description": "Não Encontrado"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Usuários"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          },
+          "404": {
+            "description": "Não Encontrado"
+          }
+        }
+      }
+    },
+    "/points": {
+      "get": {
+        "tags": [
+          "Pontos"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      }
+    },
+    "/point/{id}": {
+      "get": {
+        "tags": [
+          "Pontos"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      }
+    },
+    "/point": {
+      "post": {
+        "tags": [
+          "Pontos"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Pontos"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Não autorizado"
+          },
+          "403": {
+            "description": "Acesso Negado"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": "@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "apiKey",
+        "name": "token",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}

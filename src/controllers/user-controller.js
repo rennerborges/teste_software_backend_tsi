@@ -10,6 +10,8 @@ import { removeMaskCpf } from '../util/cpf';
 import { removeMaskTel } from '../util/tel';
 
 export const getUser = async (req, res, next) => {
+  /* #swagger.tags = ["Usuários"] */
+
   const { id } = req.params;
 
   try {
@@ -33,6 +35,8 @@ export const getUser = async (req, res, next) => {
 };
 
 export const getUsers = async (req, res) => {
+  /* #swagger.tags = ["Usuários"] */
+
   const users = await UserModel.find({
     companyId: req.user.companyId,
   }).select(['-password']);
@@ -43,6 +47,8 @@ export const getUsers = async (req, res) => {
 };
 
 export const createUser = async (req, res, next) => {
+  /* #swagger.tags = ["Usuários"] */
+
   const { body } = req;
 
   try {
@@ -92,6 +98,8 @@ export const createUser = async (req, res, next) => {
 };
 
 export const updateUser = async (req, res, next) => {
+  /* #swagger.tags = ["Usuários"] */
+
   const { body } = req;
 
   const passwordHashed = body.password
@@ -122,6 +130,8 @@ export const updateUser = async (req, res, next) => {
 };
 
 export const deleteUser = async (req, res, next) => {
+  /* #swagger.tags = ["Usuários"] */
+
   const { id } = req.params;
 
   try {

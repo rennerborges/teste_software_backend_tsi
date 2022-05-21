@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon --exec babel-node ./server.js",
     "lint:fix": "eslint --fix --ext .js, src",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "swagger-autogen": "node ./swagger/swagger.js"
   },
   "keywords": [],
   "author": "Renner Borges",
@@ -28,6 +29,8 @@
     "nodemailer": "^6.7.5",
     "nodemon": "^2.0.15",
     "prettier-eslint-cli": "^6.0.1",
+    "swagger-autogen": "^2.21.2",
+    "swagger-ui-express": "^4.4.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

@@ -4,6 +4,8 @@ import { removeMaskCnpj } from '../util/cnpj';
 import { removeValueUndefinedOrNull } from '../util/object';
 
 export const getEnvironment = async (req, res, next) => {
+  /* #swagger.tags = ["Empresas"] */
+
   const { id } = req.params;
 
   try {
@@ -24,6 +26,8 @@ export const getEnvironment = async (req, res, next) => {
 };
 
 export const getEnvironments = async (req, res) => {
+  /* #swagger.tags = ["Empresas"] */
+
   const companies = await CompanyModel.find();
 
   res.json({
@@ -32,6 +36,8 @@ export const getEnvironments = async (req, res) => {
 };
 
 export const createEnvironment = async (req, res, next) => {
+  /* #swagger.tags = ["Empresas"] */
+
   const { body } = req;
 
   try {
@@ -60,6 +66,8 @@ export const createEnvironment = async (req, res, next) => {
 };
 
 export const updateEnvironment = async (req, res, next) => {
+  /* #swagger.tags = ["Empresas"] */
+
   const { body } = req;
 
   try {
@@ -85,6 +93,8 @@ export const updateEnvironment = async (req, res, next) => {
 };
 
 export const deleteEnvironment = async (req, res, next) => {
+  /* #swagger.tags = ["Empresas"] */
+
   const { id } = req.params;
 
   try {
