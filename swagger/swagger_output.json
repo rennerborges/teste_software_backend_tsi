@@ -45,7 +45,7 @@
         "tags": [
           "Autenticação"
         ],
-        "description": "",
+        "description": "Essa rota é responsável realizar o login",
         "parameters": [],
         "responses": {
           "200": {
@@ -73,16 +73,8 @@
         "tags": [
           "Empresas"
         ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Essa rota traz todas as empresas",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -101,19 +93,12 @@
         "tags": [
           "Empresas"
         ],
-        "description": "",
+        "description": "Essa rota traz uma empresa especifica pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "token",
-            "in": "header",
             "schema": {
               "type": "string"
             }
@@ -138,19 +123,12 @@
         "tags": [
           "Empresas"
         ],
-        "description": "",
+        "description": "Essa rota deleta uma empresa especifica pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "token",
-            "in": "header",
             "schema": {
               "type": "string"
             }
@@ -177,16 +155,8 @@
         "tags": [
           "Empresas"
         ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Essa rota cria empresas",
+        "parameters": [],
         "responses": {
           "201": {
             "description": "Criado"
@@ -197,22 +167,24 @@
           "403": {
             "description": "Acesso Negado"
           }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCompany"
+              }
+            }
+          }
         }
       },
       "patch": {
         "tags": [
           "Empresas"
         ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Essa rota edita uma empresa",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -226,6 +198,16 @@
           "404": {
             "description": "Não Encontrado"
           }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditCompany"
+              }
+            }
+          }
         }
       }
     },
@@ -234,16 +216,8 @@
         "tags": [
           "Usuários"
         ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Essa rota traz todos os usuários",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -262,19 +236,12 @@
         "tags": [
           "Usuários"
         ],
-        "description": "",
+        "description": "Essa rota traz um usuário especifico pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "token",
-            "in": "header",
             "schema": {
               "type": "string"
             }
@@ -299,19 +266,12 @@
         "tags": [
           "Usuários"
         ],
-        "description": "",
+        "description": "Essa rota deleta um usuário especifico pelo ID",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "token",
-            "in": "header",
             "schema": {
               "type": "string"
             }
@@ -338,16 +298,8 @@
         "tags": [
           "Usuários"
         ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Essa rota cria usuários",
+        "parameters": [],
         "responses": {
           "201": {
             "description": "Criado"
@@ -361,22 +313,24 @@
           "404": {
             "description": "Não Encontrado"
           }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUser"
+              }
+            }
+          }
         }
       },
       "patch": {
         "tags": [
           "Usuários"
         ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "description": "Essa rota edita um usuário",
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -390,6 +344,16 @@
           "404": {
             "description": "Não Encontrado"
           }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditUser"
+              }
+            }
+          }
         }
       }
     },
@@ -399,15 +363,7 @@
           "Pontos"
         ],
         "description": "",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -435,13 +391,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -463,15 +412,7 @@
           "Pontos"
         ],
         "description": "",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "201": {
             "description": "Criado"
@@ -489,15 +430,7 @@
           "Pontos"
         ],
         "description": "",
-        "parameters": [
-          {
-            "name": "token",
-            "in": "header",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -519,11 +452,119 @@
         "properties": {
           "email": {
             "type": "string",
-            "example": "@gmail.com"
+            "example": "renner@gmail.com"
           },
           "password": {
             "type": "string",
-            "example": "string"
+            "example": "12345678@Re"
+          }
+        }
+      },
+      "CreateCompany": {
+        "type": "object",
+        "properties": {
+          "fantasyName": {
+            "type": "string",
+            "example": "Microsoft"
+          },
+          "corporateName": {
+            "type": "string",
+            "example": "Microsoft"
+          },
+          "cnpj": {
+            "type": "string",
+            "example": "68035847000145"
+          },
+          "areaOfOperation": {
+            "type": "string",
+            "example": "Software"
+          }
+        }
+      },
+      "EditCompany": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "62804e353f356e900d5eadd9"
+          },
+          "fantasyName": {
+            "type": "string",
+            "example": "Microsoft"
+          },
+          "corporateName": {
+            "type": "string",
+            "example": "Microsoft"
+          },
+          "areaOfOperation": {
+            "type": "string",
+            "example": "Software"
+          }
+        }
+      },
+      "CreateUser": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Renner Borges"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345678@Re"
+          },
+          "email": {
+            "type": "string",
+            "example": "rennerferreira23@gmail.com"
+          },
+          "cpf": {
+            "type": "string",
+            "example": "07517373480"
+          },
+          "tel": {
+            "type": "string",
+            "example": "6499295-4946"
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "example": "2022-05-21T21:04:50.928Z"
+          },
+          "companyId": {
+            "type": "string",
+            "example": "628105ab5146f608d0567d6b"
+          },
+          "role": {
+            "type": "string",
+            "example": "g"
+          },
+          "workload": {
+            "type": "number",
+            "example": 160
+          }
+        }
+      },
+      "EditUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "6281096a860c72ada8bb6715"
+          },
+          "name": {
+            "type": "string",
+            "example": "Renner Borges"
+          },
+          "tel": {
+            "type": "string",
+            "example": "6499295-4946"
+          },
+          "password": {
+            "type": "string",
+            "example": "12345678@Re"
+          },
+          "workload": {
+            "type": "number",
+            "example": 160
           }
         }
       }

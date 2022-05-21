@@ -5,7 +5,13 @@ import { removeValueUndefinedOrNull } from '../util/object';
 
 export const getEnvironment = async (req, res, next) => {
   /* #swagger.tags = ["Empresas"] */
-
+  /* #swagger.description = "Essa rota traz uma empresa especifica pelo ID" */
+  /* #swagger.parameters['id'] = {
+      in: "path",
+      description: "ID da empresa",
+      required: true,
+      type: string,
+  } */
   const { id } = req.params;
 
   try {
@@ -27,6 +33,7 @@ export const getEnvironment = async (req, res, next) => {
 
 export const getEnvironments = async (req, res) => {
   /* #swagger.tags = ["Empresas"] */
+  /* #swagger.description = "Essa rota traz todas as empresas" */
 
   const companies = await CompanyModel.find();
 
@@ -37,6 +44,16 @@ export const getEnvironments = async (req, res) => {
 
 export const createEnvironment = async (req, res, next) => {
   /* #swagger.tags = ["Empresas"] */
+  /* #swagger.description = "Essa rota cria empresas" */
+  /* #swagger.requestBody = { 
+    required: true, 
+    content: { 
+      "application/json": { 
+        schema: { $ref: "#/components/schemas/CreateCompany" }, 
+      } 
+    } 
+    } 
+  */
 
   const { body } = req;
 
@@ -67,7 +84,16 @@ export const createEnvironment = async (req, res, next) => {
 
 export const updateEnvironment = async (req, res, next) => {
   /* #swagger.tags = ["Empresas"] */
-
+  /* #swagger.description = "Essa rota edita uma empresa" */
+  /* #swagger.requestBody = { 
+    required: true, 
+    content: { 
+      "application/json": { 
+        schema: { $ref: "#/components/schemas/EditCompany" }, 
+      } 
+    } 
+    } 
+  */
   const { body } = req;
 
   try {
@@ -94,6 +120,13 @@ export const updateEnvironment = async (req, res, next) => {
 
 export const deleteEnvironment = async (req, res, next) => {
   /* #swagger.tags = ["Empresas"] */
+  /* #swagger.description = "Essa rota deleta uma empresa especifica pelo ID" */
+  /* #swagger.parameters['id'] = {
+      in: "path",
+      description: "ID da empresa",
+      required: true,
+      type: string,
+  } */
 
   const { id } = req.params;
 
