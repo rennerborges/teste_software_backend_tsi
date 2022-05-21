@@ -29,12 +29,12 @@ const doc = {
     {
       name: 'Empresas',
       description:
-        'Responsável pelas empresas onde o usuário estára vinculado para registar um ponto', // Tag description
+        'Responsável pelas empresas onde o usuário estára vinculado para registar um ponto',
     },
     {
       name: 'Usuários',
       description:
-        'Responsável pelos usuários vinculados a uma empresa que usarão a aplicação', // Tag description
+        'Responsável pelos usuários vinculados a uma empresa que usarão a aplicação',
     },
     {
       name: 'Pontos',
