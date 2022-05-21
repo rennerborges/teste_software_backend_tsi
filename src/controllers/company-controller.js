@@ -5,7 +5,7 @@ import { removeValueUndefinedOrNull } from '../util/object';
 
 export const getEnvironment = async (req, res, next) => {
   /* #swagger.tags = ["Empresas"] */
-  /* #swagger.description = "Essa rota traz uma empresa especifica pelo ID" */
+  /* #swagger.description = "Rota responsável por trazer uma empresa específica pelo ID da mesma" */
   /* #swagger.parameters['id'] = {
       in: "path",
       description: "ID da empresa",
@@ -33,7 +33,7 @@ export const getEnvironment = async (req, res, next) => {
 
 export const getEnvironments = async (req, res) => {
   /* #swagger.tags = ["Empresas"] */
-  /* #swagger.description = "Essa rota traz todas as empresas" */
+  /* #swagger.description = "Rota responsável por trazer todas empresas" */
 
   const companies = await CompanyModel.find();
 
@@ -44,7 +44,7 @@ export const getEnvironments = async (req, res) => {
 
 export const createEnvironment = async (req, res, next) => {
   /* #swagger.tags = ["Empresas"] */
-  /* #swagger.description = "Essa rota cria empresas" */
+  /* #swagger.description = "Rota responsável por criar uma empresa" */
   /* #swagger.requestBody = { 
     required: true, 
     content: { 
@@ -84,7 +84,7 @@ export const createEnvironment = async (req, res, next) => {
 
 export const updateEnvironment = async (req, res, next) => {
   /* #swagger.tags = ["Empresas"] */
-  /* #swagger.description = "Essa rota edita uma empresa" */
+  /* #swagger.description = "Rota responsável por atualizar uma empresa utilizando seu ID" */
   /* #swagger.requestBody = { 
     required: true, 
     content: { 
@@ -120,7 +120,7 @@ export const updateEnvironment = async (req, res, next) => {
 
 export const deleteEnvironment = async (req, res, next) => {
   /* #swagger.tags = ["Empresas"] */
-  /* #swagger.description = "Essa rota deleta uma empresa especifica pelo ID" */
+  /* #swagger.description = "Rota responsável por desativar uma empresa utilizando seu ID" */
   /* #swagger.parameters['id'] = {
       in: "path",
       description: "ID da empresa",

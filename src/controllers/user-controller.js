@@ -11,7 +11,7 @@ import { removeMaskTel } from '../util/tel';
 
 export const getUser = async (req, res, next) => {
   /* #swagger.tags = ["Usuários"] */
-  /* #swagger.description = "Essa rota traz um usuário especifico pelo ID" */
+  /* #swagger.description = "Rota responsável por trazer um usuário específico pelo ID do mesmo" */
   /* #swagger.parameters['id'] = {
       in: "path",
       description: "ID da empresa",
@@ -42,7 +42,7 @@ export const getUser = async (req, res, next) => {
 
 export const getUsers = async (req, res) => {
   /* #swagger.tags = ["Usuários"] */
-  /* #swagger.description = "Essa rota traz todos os usuários" */
+  /* #swagger.description = "Rota responsável por trazer todos usuários" */
   const users = await UserModel.find({
     companyId: req.user.companyId,
   }).select(['-password']);
@@ -54,7 +54,7 @@ export const getUsers = async (req, res) => {
 
 export const createUser = async (req, res, next) => {
   /* #swagger.tags = ["Usuários"] */
-  /* #swagger.description = "Essa rota cria usuários" */
+  /* #swagger.description = "Rota responsável por criar um usuário vinculado a uma empresa" */
   /* #swagger.requestBody = { 
     required: true, 
     content: { 
@@ -114,7 +114,7 @@ export const createUser = async (req, res, next) => {
 
 export const updateUser = async (req, res, next) => {
   /* #swagger.tags = ["Usuários"] */
-  /* #swagger.description = "Essa rota edita um usuário" */
+  /* #swagger.description = "Rota responsável por atualizar um usuário utilizando seu ID" */
   /* #swagger.requestBody = { 
     required: true, 
     content: { 
@@ -155,7 +155,7 @@ export const updateUser = async (req, res, next) => {
 
 export const deleteUser = async (req, res, next) => {
   /* #swagger.tags = ["Usuários"] */
-  /* #swagger.description = "Essa rota deleta um usuário especifico pelo ID" */
+  /* #swagger.description = "Rota responsável por desativar um usuário utilizando seu ID" */
   /* #swagger.parameters['id'] = {
       in: "path",
       description: "ID da empresa",

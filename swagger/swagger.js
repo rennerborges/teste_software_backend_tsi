@@ -14,7 +14,7 @@ const doc = {
   info: {
     version: '1.0.0',
     title: 'API SpeedPoint',
-    description: 'Ambiente com as rotas do SpeedPoint',
+    description: 'Ambiente com todos os endpoints do Speed Point',
   },
   host: `localhost:${process.env.PORT}`,
   basePath: '/',
@@ -24,21 +24,22 @@ const doc = {
   tags: [
     {
       name: 'Autenticação',
-      description: 'Responsável por autenticar os usuários',
+      description:
+        'Responsável por todo gerenciamento da autenticação no software',
     },
     {
       name: 'Empresas',
       description:
-        'Responsável pelas empresas onde o usuário estára vinculado para registar um ponto',
+        'Responsável pelo gerenciamento das empresas onde o usuário estará vinculado para registar um ponto',
     },
     {
       name: 'Usuários',
-      description:
-        'Responsável pelos usuários vinculados a uma empresa que usarão a aplicação',
+      description: 'Responsável pelo gerenciamento dos usuários',
     },
     {
       name: 'Pontos',
-      description: 'Registros do honorários dos usuários',
+      description:
+        'Responsável pelo gerenciamento dos registros dos honorários dos usuários',
     },
   ],
   securityDefinitions: {

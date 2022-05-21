@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "API SpeedPoint",
-    "description": "Ambiente com as rotas do SpeedPoint"
+    "description": "Ambiente com todos os endpoints do Speed Point"
   },
   "servers": [
     {
@@ -13,19 +13,19 @@
   "tags": [
     {
       "name": "Autenticação",
-      "description": "Responsável por autenticar os usuários"
+      "description": "Responsável por todo gerenciamento da autenticação no software"
     },
     {
       "name": "Empresas",
-      "description": "Responsável pelas empresas onde o usuário estára vinculado para registar um ponto"
+      "description": "Responsável pelo gerenciamento das empresas onde o usuário estará vinculado para registar um ponto"
     },
     {
       "name": "Usuários",
-      "description": "Responsável pelos usuários vinculados a uma empresa que usarão a aplicação"
+      "description": "Responsável pelo gerenciamento dos usuários"
     },
     {
       "name": "Pontos",
-      "description": "Registros do honorários dos usuários"
+      "description": "Responsável pelo gerenciamento dos registros dos honorários dos usuários"
     }
   ],
   "paths": {
@@ -73,7 +73,7 @@
         "tags": [
           "Empresas"
         ],
-        "description": "Essa rota traz todas as empresas",
+        "description": "Rota responsável por trazer todas empresas",
         "parameters": [],
         "responses": {
           "200": {
@@ -93,7 +93,7 @@
         "tags": [
           "Empresas"
         ],
-        "description": "Essa rota traz uma empresa especifica pelo ID",
+        "description": "Rota responsável por trazer uma empresa específica pelo ID da mesma",
         "parameters": [
           {
             "name": "id",
@@ -124,7 +124,7 @@
         "tags": [
           "Empresas"
         ],
-        "description": "Essa rota deleta uma empresa especifica pelo ID",
+        "description": "Rota responsável por desativar uma empresa utilizando seu ID",
         "parameters": [
           {
             "name": "id",
@@ -157,7 +157,7 @@
         "tags": [
           "Empresas"
         ],
-        "description": "Essa rota cria empresas",
+        "description": "Rota responsável por criar uma empresa",
         "parameters": [],
         "responses": {
           "201": {
@@ -185,7 +185,7 @@
         "tags": [
           "Empresas"
         ],
-        "description": "Essa rota edita uma empresa",
+        "description": "Rota responsável por atualizar uma empresa utilizando seu ID",
         "parameters": [],
         "responses": {
           "200": {
@@ -218,7 +218,7 @@
         "tags": [
           "Usuários"
         ],
-        "description": "Essa rota traz todos os usuários",
+        "description": "Rota responsável por trazer todos usuários",
         "parameters": [],
         "responses": {
           "200": {
@@ -238,7 +238,7 @@
         "tags": [
           "Usuários"
         ],
-        "description": "Essa rota traz um usuário especifico pelo ID",
+        "description": "Rota responsável por trazer um usuário específico pelo ID do mesmo",
         "parameters": [
           {
             "name": "id",
@@ -269,7 +269,7 @@
         "tags": [
           "Usuários"
         ],
-        "description": "Essa rota deleta um usuário especifico pelo ID",
+        "description": "Rota responsável por desativar um usuário utilizando seu ID",
         "parameters": [
           {
             "name": "id",
@@ -302,7 +302,7 @@
         "tags": [
           "Usuários"
         ],
-        "description": "Essa rota cria usuários",
+        "description": "Rota responsável por criar um usuário vinculado a uma empresa",
         "parameters": [],
         "responses": {
           "201": {
@@ -333,7 +333,7 @@
         "tags": [
           "Usuários"
         ],
-        "description": "Essa rota edita um usuário",
+        "description": "Rota responsável por atualizar um usuário utilizando seu ID",
         "parameters": [],
         "responses": {
           "200": {
@@ -531,7 +531,7 @@
           },
           "dateOfBirth": {
             "type": "string",
-            "example": "2022-05-21T21:36:58.304Z"
+            "example": "2022-05-21T21:45:59.143Z"
           },
           "companyId": {
             "type": "string",
