@@ -26,18 +26,26 @@
     {
       "name": "Pontos",
       "description": "Responsável pelo gerenciamento dos registros dos honorários dos usuários"
+    },
+    {
+      "name": "Home",
+      "description": "Código 500 a resposta para o universo"
     }
   ],
   "paths": {
     "/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Home"
+        ],
+        "description": "Rota de teste da API",
         "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
           }
-        }
+        },
+        "security": []
       }
     },
     "/login": {
@@ -45,7 +53,7 @@
         "tags": [
           "Autenticação"
         ],
-        "description": "Essa rota é responsável realizar o login",
+        "description": "Rota responsável por autenticar um usuário",
         "parameters": [],
         "responses": {
           "200": {
@@ -531,7 +539,7 @@
           },
           "dateOfBirth": {
             "type": "string",
-            "example": "2022-05-21T21:45:59.143Z"
+            "example": "2022-05-21T21:56:18.973Z"
           },
           "companyId": {
             "type": "string",

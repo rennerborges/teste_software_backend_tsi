@@ -6,7 +6,7 @@ import UserModel from '../models/user';
 dotenv.config({ path: './variables.env' });
 
 export const login = async (req, res) => {
-  /* #swagger.description = "Essa rota é responsável realizar o login" */
+  /* #swagger.description = "Rota responsável por autenticar um usuário" */
   /* #swagger.security = [] */
   /* #swagger.tags = ["Autenticação"] */
   /* #swagger.requestBody = { 

@@ -41,6 +41,10 @@ const doc = {
       description:
         'Responsável pelo gerenciamento dos registros dos honorários dos usuários',
     },
+    {
+      name: 'Home',
+      description: 'Código 500 a resposta para o universo',
+    },
   ],
   securityDefinitions: {
     bearerAuth: {
