@@ -16,7 +16,7 @@ export const getUser = async (req, res, next) => {
       in: "path",
       description: "ID da empresa",
       required: true,
-      type: string,
+      type: "string",
   } */
   const { id } = req.params;
 
@@ -160,7 +160,7 @@ export const deleteUser = async (req, res, next) => {
       in: "path",
       description: "ID da empresa",
       required: true,
-      type: string,
+      type: "string",
   } */
   const { id } = req.params;
 

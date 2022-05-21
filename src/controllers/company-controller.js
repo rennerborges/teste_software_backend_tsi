@@ -10,7 +10,7 @@ export const getEnvironment = async (req, res, next) => {
       in: "path",
       description: "ID da empresa",
       required: true,
-      type: string,
+      type: "string",
   } */
   const { id } = req.params;
 
@@ -125,7 +125,7 @@ export const deleteEnvironment = async (req, res, next) => {
       in: "path",
       description: "ID da empresa",
       required: true,
-      type: string,
+      type: "string",
   } */
 
   const { id } = req.params;
